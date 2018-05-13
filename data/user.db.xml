@@ -1,0 +1,25 @@
+<users>
+    <type>Simple</type>
+    <user id="1">
+        <name>
+            <first></first>
+            <last></last>
+        </name>
+        <secret>
+            <username>Jane Doe</username>
+            <password>please change me</password>
+        </secret>
+        <email>janedoe@email.com</email>
+    </user>
+    <user id="2">
+        <name>
+            <first></first>
+            <last></last>
+        </name>
+        <secret>
+            <username>John Doe</username>
+            <password>change me</password>
+        </secret>
+        <email>johndoe@email.com</email>
+    </user>
+</users>

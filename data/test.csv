@@ -1,0 +1,5 @@
+id,fname,lname,age,username,email,password
+1,jane,doe,35,janedoe,janedoe@email.com,my awesome password
+2,john,smith,53,smith_john,jsmith@email.com,my other password
+3,mary,jane,83,mary_jane,mary_jane@email.com,"my,password"
+4,bob,jones,93,bob_jones,bob_jones@email.com,"this is ""my"" password"

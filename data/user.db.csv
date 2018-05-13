@@ -1,0 +1,4 @@
+id,fname,lname,username,password,email
+1,Jane,Doe,jane_doe,"please, change me",janedoe@email.com
+2,John,Doe,john_doe,change me,johndoe@email.com
+3,Mary,Jane,mary_jane,"change ""my"" password",maryjane@email.com
