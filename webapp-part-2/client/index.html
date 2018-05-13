@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My WebApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<body onload="getUsers();">
+    <div id="head">
+        <h3>My WebApp</h3>
+        <div id="menu">
+            <a href="/">Home</a>
+            <a href="/users">Users</a>
+            <a href="/books">Books</a>
+        </div>
+    </div>
+    <div id="main">
+        <form action="http://localhost:8080/users/" method="post">
+            <label for="username">Username:
+                <input type="text" id="username" name="username">
+            </label>
+            <label for="email">Email:
+                <input type="text" id="email" name="email">
+            </label>
+            <label for="password">Password:
+                <input type="password" id="password" name="password">
+            </label>
+            <button type="button" onclick="addUser(event)">Add User</button>
+        </form>
+        <h3>Total Users:
+            <span id="user-count">5</span>
+        </h3>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
