@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My WebApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+</head>
+
+<body onload="onLoaded();">
+    <div id="head">
+        <h3>Books</h3>
+        <div id="menu">
+            <a href="/">Home</a>
+            <a href="/users">Users</a>
+            <a href="/books">
+                <b>Books</b>
+            </a>
+        </div>
+    </div>
+    <div id="main">
+        Total books: {{len .BooksListing}}
+        <hr/>
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>ISBN</td>
+                    <td>Title</td>
+                    <td>Author</td>
+                    <td>Pub. Date</td>
+                    <td>Price</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .BooksListing}}
+                <tr>
+                    <td>{{.Isbn}}</td>
+                    <td>{{.Title}}</td>
+                    <td>{{.Author}}</td>
+                    <td>{{.PubDate}}</td>
+                    <td>{{.Price}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
