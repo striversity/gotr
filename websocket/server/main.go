@@ -16,9 +16,10 @@ type (
 	}
 	Todos         []Todo
 	ClientRequest struct {
-		Type string `json:"type,omitempty"` // hello, add, or remove
-		Todo `json:"todo,omitempty"`
-		ID   int `json:"id,omitempty"`
+		Username string `json:"username,omitempty"`
+		Type     string `json:"type,omitempty"` // hello, add, or remove
+		Todo     `json:"todo,omitempty"`
+		ID       int `json:"id,omitempty"`
 	}
 	ClientResponse struct {
 		Todos `json:"todos,omitempty"`
@@ -26,10 +27,11 @@ type (
 )
 
 var upgrader websocket.Upgrader
-var todos Todos
+var db map[string]Todos
 var todoID int
 
 func main() {
+	db = make(map[string]Todos)
 	upgrader.CheckOrigin = func(r *http.Request) bool {
 		return true
 	}
@@ -52,17 +54,22 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 			return
 		}
-		log.Infof("Message from clinet: %v", clientReq)
+		log.Infof("Message from clinet: %#v", clientReq)
+		if 0 == len(clientReq.Username) {
+			return
+		}
 
 		clientResp := &ClientResponse{}
+		var todos Todos
 		switch clientReq.Type {
+		case "hello":
+			todos = getTodos(clientReq.Username)
 		case "add":
-			todoID++
-			clientReq.Todo.ID = todoID
-			todos = append(todos, clientReq.Todo)
-			log.Infof("All todos: %v", todos)
+			todos = addTodo(clientReq.Username, clientReq.Todo)
 		case "delete":
-			removeTodo(clientReq.ID)
+			todos = removeTodo(clientReq.Username, clientReq.ID)
+		case "toggle.done":
+			todos = toggleDone(clientReq.Username, clientReq.ID)
 		}
 
 		clientResp.Todos = todos
@@ -71,12 +78,35 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func removeTodo(id int) {
+func toggleDone(username string, id int) Todos{
+	todos := db[username]
+	for i, v := range todos {
+		if id == v.ID {
+			todos[i].Done = !v.Done
+		}
+	}
+	return todos
+}
+func getTodos(username string) Todos {
+	return db[username]
+}
+func addTodo(username string, todo Todo) Todos {
+	todoID++
+	todo.ID = todoID
+	todos := db[username]
+	todos = append(todos, todo)
+	db[username] = todos
+	return todos
+}
+
+func removeTodo(username string, id int) Todos{
+	todos := db[username]
 	var tmp Todos
 	for _, v := range todos {
 		if id != v.ID {
 			tmp = append(tmp, v)
 		}
 	}
-	todos = tmp
+	db[username] = tmp
+	return tmp
 }
