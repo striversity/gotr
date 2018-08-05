@@ -8,30 +8,12 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-type (
-	Todo struct {
-		ID          int    `json:"id,omitempty"`
-		Description string `json:"description,omitempty"`
-		Done        bool   `json:"done"`
-	}
-	Todos         []Todo
-	ClientRequest struct {
-		Username string `json:"username,omitempty"`
-		Type     string `json:"type,omitempty"` // hello, add, or remove
-		Todo     `json:"todo,omitempty"`
-		ID       int `json:"id,omitempty"`
-	}
-	ClientResponse struct {
-		Todos `json:"todos,omitempty"`
-	}
-)
-
 var upgrader websocket.Upgrader
-var db map[string]Todos
+var db map[string]*Client
 var todoID int
 
 func main() {
-	db = make(map[string]Todos)
+	db = make(map[string]*Client)
 	upgrader.CheckOrigin = func(r *http.Request) bool {
 		return true
 	}
@@ -61,52 +43,77 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 		clientResp := &ClientResponse{}
 		var todos Todos
+		var username = clientReq.Username
+
 		switch clientReq.Type {
 		case "hello":
-			todos = getTodos(clientReq.Username)
+			doLogin(username, conn)
+			todos = getTodos(username)
 		case "add":
-			todos = addTodo(clientReq.Username, clientReq.Todo)
+			todos = addTodo(username, clientReq.Todo)
 		case "delete":
-			todos = removeTodo(clientReq.Username, clientReq.ID)
+			todos = removeTodo(username, clientReq.ID)
 		case "toggle.done":
-			todos = toggleDone(clientReq.Username, clientReq.ID)
+			todos = toggleDone(username, clientReq.ID)
 		}
 
 		clientResp.Todos = todos
-		log.Infof("Message ==> clinet: %v", clientResp)
-		conn.WriteJSON(clientResp)
+		connections := getConnections(username)
+		log.Infof("Updating %v clients for user %v", len(connections), username)
+		for _, c := range connections {
+			if err := c.WriteJSON(clientResp); err != nil {
+				doLogout(username, c)
+			}
+		}
 	}
 }
 
-func toggleDone(username string, id int) Todos{
-	todos := db[username]
-	for i, v := range todos {
-		if id == v.ID {
-			todos[i].Done = !v.Done
+func doLogout(username string, c *websocket.Conn) {
+	conns := db[username].Connections
+	var tmp Connections
+	for _, v := range conns {
+		if v != c {
+			tmp = append(tmp, v)
 		}
 	}
-	return todos
+	db[username].Connections = tmp
+}
+func getConnections(username string) Connections {
+	return db[username].Connections
+}
+func doLogin(username string, c *websocket.Conn) {
+	if db[username] == nil {
+		db[username] = &Client{}
+	}
+	db[username].Connections = append(db[username].Connections, c)
+}
+
+func toggleDone(username string, id int) Todos {
+	for i, v := range db[username].Todos {
+		if id == v.ID {
+			db[username].Todos[i].Done = !v.Done
+		}
+	}
+	return db[username].Todos
 }
 func getTodos(username string) Todos {
-	return db[username]
+	return db[username].Todos
 }
 func addTodo(username string, todo Todo) Todos {
 	todoID++
 	todo.ID = todoID
-	todos := db[username]
-	todos = append(todos, todo)
-	db[username] = todos
-	return todos
+	db[username].Todos = append(db[username].Todos, todo)
+	return db[username].Todos
 }
 
-func removeTodo(username string, id int) Todos{
-	todos := db[username]
+func removeTodo(username string, id int) Todos {
+	todos := db[username].Todos
 	var tmp Todos
 	for _, v := range todos {
 		if id != v.ID {
 			tmp = append(tmp, v)
 		}
 	}
-	db[username] = tmp
+	db[username].Todos = tmp
 	return tmp
 }
