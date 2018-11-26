@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"os"
 
-	"esurelabs.homelinux.com/verrol/go-on-the-run/types"
+	"github.com/striversity/go-on-the-run/types"
 	log "github.com/Sirupsen/logrus"
 )
 

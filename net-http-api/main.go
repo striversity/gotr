@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
-	"esurelabs.homelinux.com/verrol/go-on-the-run/net-http-api/api/user"
+	"github.com/striversity/go-on-the-run/net-http-api/api/user"
 )
 
 func main() {

@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"esurelabs.homelinux.com/verrol/go-on-the-run/webapp-part-1/server/api/user"
+	"github.com/striversity/go-on-the-run/webapp-part-1/server/api/user"
 )
 
 func main() {

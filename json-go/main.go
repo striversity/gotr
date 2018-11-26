@@ -10,7 +10,7 @@ import (
 	"log"
 	"os"
 
-	"esurelabs.homelinux.com/verrol/go-on-the-run/types"
+	"github.com/striversity/go-on-the-run/types"
 )
 
 const jsonFile = "../data/user.db.json"
