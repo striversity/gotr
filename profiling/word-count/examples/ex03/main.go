@@ -105,7 +105,7 @@ func printResult(result map[string]int) {
 	fmt.Printf("%-10s%s\n", "Count", "Word")
 	fmt.Printf("%-10s%s\n", "-----", "----")
 
-	for _, _ = range result {
-		//	fmt.Printf("%-10v%s\n", c, w)
+	for w, c := range result {
+		fmt.Printf("%-10v%s\n", c, w)
 	}
 }
