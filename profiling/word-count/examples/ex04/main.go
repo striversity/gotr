@@ -15,7 +15,6 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
-	_ "net/http/pprof"
 	"os"
 	"runtime"
 	"runtime/pprof"
@@ -59,7 +58,7 @@ func main() {
 	finResult := make(map[string]int)
 	results := make(chan map[string]int, maxWorkers)
 	workQueue := make(chan string, maxWorkers)
-	
+
 	start := time.Now()
 	reducer(reducerWG, finResult, results)
 	for i := 0; i < maxWorkers; i++ { // start up workers

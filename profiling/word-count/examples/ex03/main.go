@@ -15,7 +15,6 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
-	_ "net/http/pprof"
 	"os"
 	"runtime"
 	"runtime/pprof"

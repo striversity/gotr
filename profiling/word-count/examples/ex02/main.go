@@ -20,7 +20,6 @@ import (
 	"runtime/pprof"
 	"strings"
 	"time"
-	 _ "net/http/pprof"
 
 	log "github.com/sirupsen/logrus"
 )
