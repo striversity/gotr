@@ -25,14 +25,16 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-const maxWorkers = 4
+const defaultWorkers = 4
 
 var (
 	cpuprofile = flag.String("cpuprofile", "", "write cpu profile to `file`")
 	memprofile = flag.String("memprofile", "", "write memory profile to `file`")
+	maxWorkers int
 )
 
 func main() {
+	flag.IntVar(&maxWorkers, "w", defaultWorkers, "number of workers for processing input")
 	flag.Parse()
 	// CPU profiling
 	// ----
@@ -54,26 +56,26 @@ func main() {
 	}
 
 	workersWG := new(sync.WaitGroup)
-	reducerWG := new(sync.WaitGroup)
-	finResult := make(map[string]int)
-	results := make(chan map[string]int, maxWorkers)
+	partialResults := make(chan map[string]int, maxWorkers)
 	workQueue := make(chan string, maxWorkers)
+	reducerWG := new(sync.WaitGroup)
+	finalResult := make(map[string]int)
 
 	start := time.Now()
-	reducer(reducerWG, finResult, results)
-	for i := 0; i < maxWorkers; i++ { // start up workers
-		processFile(workersWG, results, workQueue)
+	reducer(reducerWG, finalResult, partialResults)
+	for i := 0; i < maxWorkers; i++ { // start workers
+		processFile(workersWG, partialResults, workQueue)
 	}
-	for _, fn := range flag.Args()[:] {
+	for _, fn := range flag.Args() {
 		workQueue <- fn // send work
 	}
-	close(workQueue) // no more work to hand out, worker goroutines cleanup
-	workersWG.Wait() // wait for all workers to finish, only applies to processFile()
-	close(results)   // signal aggregator to exit
+	close(workQueue)      // no more work to hand out, worker goroutines cleanup
+	workersWG.Wait()      // wait for all workers to finish, only applies to processFile()
+	close(partialResults) // signal aggregator to exit
 	reducerWG.Wait()
 
 	defer fmt.Printf("Processing took: %v\n", time.Since(start))
-	printResult(finResult)
+	printResult(finalResult)
 
 	// Mem profiling
 	// ----
@@ -127,13 +129,13 @@ func printResult(result map[string]int) {
 	}
 }
 
-// reducer aggregates the result from each worker. it exits when the result queue closes
+// reducer aggregates the intermediate-result from each worker. it exits when the 'in' queue closes
 func reducer(wg *sync.WaitGroup, finResult map[string]int,
-	results <-chan map[string]int) {
+	in <-chan map[string]int) {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		for res := range results {
+		for res := range in {
 			for k, v := range res {
 				finResult[k] += v
 			}

@@ -54,8 +54,8 @@ func main() {
 	wg := new(sync.WaitGroup)
 
 	start := time.Now()
-	for _, fn := range flag.Args()[:] {
-		processFile(wg, result, resLock, fn)
+	for _, fn := range flag.Args() {
+		processFile(wg, fn, result, resLock)
 	}
 	wg.Wait()
 
@@ -75,7 +75,7 @@ func main() {
 	}
 }
 
-func processFile(wg *sync.WaitGroup, result map[string]int, resLock *sync.Mutex, fn string) {
+func processFile(wg *sync.WaitGroup, fn string, result map[string]int, resLock *sync.Mutex) {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()

@@ -51,7 +51,7 @@ func main() {
 	result := make(map[string]int)
 
 	start := time.Now()
-	for _, fn := range flag.Args()[:] {
+	for _, fn := range flag.Args() {
 		processFile(result, fn)
 	}
 
