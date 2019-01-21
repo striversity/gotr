@@ -1,0 +1,26 @@
+<template>
+  <h1>${heading}</h1>
+
+  <form submit.trigger="addTodo()">
+    <div hidden.bind="loggedIn">
+      <span>Username: </span>
+      <input value.bind="username">
+      <button click.trigger="doLogin()" type="button">Login</button>
+    </div>
+    <div if.bind="loggedIn">
+      <span>Description: </span>
+      <input value.bind="todoDescription">
+      <button type="submit">Add Todo</button>
+    </div>
+  </form>
+
+  <ul if.bind="loggedIn">
+    <li repeat.for="todo of todos">
+      <input type="checkbox" checked.bind="todo.done" click.trigger="toggleTodoDone(todo)">
+      <span css="text-decoration: ${todo.done ?'line-through':'none'}">
+        ${todo.description}
+      </span>
+      <button click.trigger="removeTodo(todo.id)">Remove</button>
+    </li>
+  </ul>
+</template>
