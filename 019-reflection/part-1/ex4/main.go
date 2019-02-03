@@ -30,9 +30,9 @@ func main() {
 func Println(x interface{}) {
 	switch x.(type) {
 	case bool:
-		fmt.Print(x.(bool))
+		fmt.Print("This is a boolean value: ", x.(bool))
 	case int:
-		fmt.Print(x.(int))
+		fmt.Print("This is my nice int value: ", x.(int))
 	case float64:
 		fmt.Print(x.(float64))
 	case complex128:

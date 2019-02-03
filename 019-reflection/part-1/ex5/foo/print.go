@@ -15,8 +15,8 @@ func Println(x interface{}) {
 		fmt.Print(x.(complex128))
 	case string:
 		fmt.Print(x.(string))
-	case Person:
-		fmt.Print(x.(Person))
+	// case Person:
+	// 	fmt.Print(x.(Person))
 	case chan int:
 		fmt.Print(x.(chan int))
 	default:
