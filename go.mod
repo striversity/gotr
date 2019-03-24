@@ -1,4 +1,4 @@
-module github.com/striversity/projects/go-on-the-run
+module github.com/striversity/go-on-the-run
 
 require (
 	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8
