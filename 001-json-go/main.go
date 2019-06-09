@@ -10,10 +10,10 @@ import (
 	"log"
 	"os"
 
-	"github.com/striversity/go-on-the-run/types"
+	"./types"
 )
 
-const jsonFile = "../data/user.db.json"
+const jsonFile = "./data/user.db.json"
 
 func main() {
 	createJsonFile()

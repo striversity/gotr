@@ -8,12 +8,12 @@ import (
 	"log"
 	"os"
 
-	"github.com/striversity/go-on-the-run/types"
+	"./types"
 )
 
 const (
-	jsonFile = "../data/user.db.json"
-	xmlFile  = "../data/user.db.xml"
+	jsonFile = "./data/user.db.json"
+	xmlFile  = "./data/user.db.xml"
 )
 
 func main() {

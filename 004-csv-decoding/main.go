@@ -6,7 +6,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/striversity/go-on-the-run/types"
+	"./types"
 	log "github.com/Sirupsen/logrus"
 )
 

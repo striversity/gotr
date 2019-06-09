@@ -5,17 +5,22 @@ import (
 	"encoding/json"
 	"os"
 
-	"github.com/striversity/go-on-the-run/types"
+	"./types"
 	log "github.com/Sirupsen/logrus"
 )
 
+const (
+	jsonFile = "./data/user.db.json"
+	csvFile  = "./data/user.db.csv"
+)
+
 func main() {
-	db, err := readJSONFile("../data/user.db.json")
+	db, err := readJSONFile(jsonFile)
 	if nil != err {
 		log.Fatalln(err)
 	}
 
-	f, err := os.Create("../data/user.db.csv")
+	f, err := os.Create(csvFile)
 	if nil != err {
 		log.Fatalln(err)
 	}
