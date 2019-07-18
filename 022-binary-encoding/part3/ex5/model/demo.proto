@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package model.other.thing;
+
+option go_package = "model";
+
+message Search{
+        
+    message Req{
+        string q = 1;
+        map<string, string> params = 2;
+        int64 id = 3;
+    }
+    message Resp{
+        int64 id = 1;
+        string ans = 2;
+        
+        enum From{
+            Cache = 0;
+            Current = 1;
+        }
+        From source = 3;
+    }
+
+}

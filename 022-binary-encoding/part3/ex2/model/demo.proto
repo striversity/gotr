@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package model.other.thing;
+
+option go_package = "model";
+
+message SearchReq{
+    string q = 1;
+    map<string, string> params = 2;
+}
