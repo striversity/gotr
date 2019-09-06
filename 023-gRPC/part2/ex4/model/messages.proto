@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package model;
+
+message MathRequest{
+    int64 operand1 = 1;
+    int64 operand2 = 2;
+}
+
+message MathResponse{
+    int64 result = 1;
+}
+
+service MyMathService {
+    rpc Add(MathRequest) returns (MathResponse);
+    rpc Sub(MathRequest) returns (MathResponse);
+    rpc Mul(MathRequest) returns (MathResponse);
+    rpc Div(MathRequest) returns (MathResponse);
+    rpc Mod(MathRequest) returns (MathResponse);
+}
