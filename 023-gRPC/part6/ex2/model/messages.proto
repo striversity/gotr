@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package model;
+
+message MathRequest {
+  int64 operand1 = 1;
+  int64 operand2 = 2;
+}
+
+message MathResponse { int64 result = 1; }
+
+service MyMathService {
+  rpc Add(MathRequest) returns (MathResponse);
+  rpc Sub(MathRequest) returns (MathResponse);
+  rpc Mul(MathRequest) returns (MathResponse);
+  rpc Div(MathRequest) returns (MathResponse);
+  rpc Mod(MathRequest) returns (MathResponse);
+}
+
+service DataService {
+  rpc Random(RandomRequest) returns (stream RandomResponse);
+  rpc Sum(stream SumRequest) returns (SumResponse);
+}
+
+message SumRequest{
+  int64 value = 1;
+}
+message SumResponse{
+  int64 total = 1;
+}
+
+message RandomRequest {
+  int32 count = 1;
+  bool bounded = 2;   // enforce lower and upper limits on random number
+  int64 minValue = 3; // lowest random number in sequence
+  int64 maxValue = 4; // highest random number in sequence is maxValue - 1
+}
+
+message RandomResponse { int64 value = 1; }

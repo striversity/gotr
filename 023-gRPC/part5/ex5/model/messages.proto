@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package model;
+
+message BiOperReq {
+  int64 OperandA = 3;
+  int64 OperandB = 4;
+}
+
+message BiOperesp {
+  int64 Result = 3;
+}
+
+service MathOperService {
+  rpc Add (BiOperReq) returns (BiOperesp);
+  rpc Sub (BiOperReq) returns (BiOperesp);
+  rpc Mul (BiOperReq) returns (BiOperesp);
+  rpc Div (BiOperReq) returns (BiOperesp);
+  rpc Mod (BiOperReq) returns (BiOperesp);
+}
