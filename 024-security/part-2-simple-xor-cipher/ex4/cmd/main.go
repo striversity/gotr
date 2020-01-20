@@ -2,51 +2,30 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 )
 
-var (
-	encrypt = cipher
-	decrypt = cipher
-)
-
 func main() {
-
-	sender()
-	reciever()
-	attacker()
-}
-func sender() {
 	mesg := []byte("This is a very secret message!")
 	key := []byte("secret1")
 
 	fmt.Printf("Message: %s\n", string(mesg))
-	enc := encrypt(mesg, key)
+	enc := xor(mesg, key)
 
 	f, _ := os.Create("enc.txt")
 	f.Write(enc)
 	f.Close()
-}
 
-func reciever() {
-	key := []byte("secret1")
-	enc, _ := ioutil.ReadFile("enc.txt")
+	// fmt.Printf("Encypted: %s\n", string(enc))
 
-	enc2 := decrypt(enc, key)
+	// -----
+	enc2 := xor(enc, key)
 	fmt.Printf("Decrypted: %s\n", string(enc2))
-}
 
-func attacker() {
-	key := []byte("secret2")
-	enc, _ := ioutil.ReadFile("enc.txt")
-
-	enc2 := decrypt(enc, key)
-	fmt.Printf("Attacker: %s\n", string(enc2))
 }
 
 /*
- cipher performs byte-wise operation on a byte slice 'buf' using
+ xor performs byte-wise operation on a byte slice 'buf' using
  a second byte slice 'key'
 
  Assume:
@@ -68,7 +47,7 @@ func attacker() {
 	<buffer here is very long>
 	<key is short|key is shor>
 */
-func cipher(buf []byte, key []byte) []byte {
+func xor(buf []byte, key []byte) []byte {
 	var out []byte
 	m := len(key)
 
