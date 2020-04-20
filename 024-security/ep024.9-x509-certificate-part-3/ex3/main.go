@@ -35,9 +35,6 @@ func main() {
 
 		block := &pem.Block{
 			Type: "CERTIFICATE",
-			Headers: map[string]string{
-				"Created by": os.Args[0],
-			},
 			Bytes: cert,
 		}
 
