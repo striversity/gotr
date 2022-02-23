@@ -1,0 +1,10 @@
+FROM alpine
+
+COPY server /app/server
+
+ENV REDIS_URL=10.10.100.158:6379
+ENV LISTEN_ADDRESS=:8080
+
+EXPOSE 8080
+
+ENTRYPOINT ["/app/server"]
