@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: striversity-stack
+  labels:
+    name: striversity-stack
+spec:
+  containers:
+    - name: redis
+      image: redis
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 6379
+
+    - name: server
+      image: striversity/using-k8s:server-02
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8080
+          
+    - name: counter
+      image: striversity/using-k8s:counter-02
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+          
+    - name: poller
+      image: striversity/using-k8s:poller-02
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"

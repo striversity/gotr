@@ -1,0 +1,25 @@
+services:
+  redis:
+    image: redis
+  server:
+    depends_on:
+      - redis
+    build: ./server
+    image: striversity/using-k8s:server-02
+    environment:
+      - REDIS_URL=redis:6379
+  counter:
+    depends_on:
+      - server
+    build: ./counter
+    image: striversity/using-k8s:counter-02
+    environment:
+      - API_URL=http://server:8080/counter
+  poller:
+    depends_on:
+      - server
+      - counter
+    build: ./poller
+    image: striversity/using-k8s:poller-02
+    environment:
+      - API_URL=http://server:8080/counter
