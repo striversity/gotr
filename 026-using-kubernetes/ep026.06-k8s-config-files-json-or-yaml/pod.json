@@ -1,0 +1,23 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "name": "my-stack",
+        "labels": {
+            "frontend": "production",
+            "location": "east"
+        }
+    },
+    "spec": {
+        "containers": [
+            {
+                "name": "redis",
+                "image": "redis"
+            },
+            {
+                "name": "server",
+                "image": "server-02"
+            }
+        ]
+    }
+}

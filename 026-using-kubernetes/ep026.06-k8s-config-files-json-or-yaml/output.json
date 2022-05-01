@@ -1,0 +1,19 @@
+{
+    "age": 42,
+    "name": "Jane Doe",
+    "ssn": "011-00-1234",
+    "addresses": [
+        {
+            "street": "123 First Street",
+            "city": "My City",
+            "state": "Some State",
+            "zip": 12345
+        },
+        {
+            "street": "45 Main Street",
+            "city": "Other City",
+            "state": "Another State",
+            "zip": 89754
+        }
+    ]
+}
