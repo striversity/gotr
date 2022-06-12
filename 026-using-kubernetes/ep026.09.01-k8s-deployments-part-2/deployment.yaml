@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-stack
+  labels:
+    owner: striversity
+    app: stuff
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: stuff
+  template:
+    metadata:
+      labels:
+        app: stuff
+    spec:
+      containers:
+      - name: awesome
+        image: striversity/using-k8s:awesome-01
+        env:
+          - name: VERSION
+            value: "v1.0"

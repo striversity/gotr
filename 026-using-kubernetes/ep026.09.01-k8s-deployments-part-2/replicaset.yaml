@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-stack
+  labels:
+    owner: striversity
+    app: stuff
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: stuff
+  template:
+    metadata:
+      labels:
+        app: stuff
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.1
+      - name: redis
+        image: redis
