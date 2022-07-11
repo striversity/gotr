@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: asrv-be-api
+spec:
+  selector:
+    app: asrv
+  ports:
+  - port: 8080
+    targetPort: 8080
