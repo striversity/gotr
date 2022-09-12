@@ -1,0 +1,47 @@
+---
+# Middleware
+# Strip prefix /overview
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: mw-admin
+spec:
+  stripPrefix:
+    forceSlash: true
+    prefixes:
+      - /nginx
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  labels:
+    name: my-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: ingress-mw-admin@kubernetescrd
+spec:
+  rules:
+  - http:
+      paths:
+      - path: "/srv1"
+        pathType: Prefix
+        backend:
+          service:
+            name: asrv1
+            port: 
+              number: 8080
+      - path: "/srv2"
+        pathType: Prefix
+        backend:
+          service:
+            name: asrv2
+            port: 
+              number: 8080
+      - path: "/nginx"
+        pathType: Prefix
+        backend:
+          service:
+            name: asrv2
+            port: 
+              number: 80
