@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asrv2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asrv2
+  template:
+    metadata:
+      labels:
+        app: asrv2
+    spec:
+      containers:
+      - name: asrv2
+        image: striversity/using-k8s-asrv:v0.0.2
+        env:
+        - name: VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: myapp
+              key: srv2_version
+        - name: DATA
+          valueFrom:
+            configMapKeyRef:
+              name: myapp
+              key: test_data
+        ports:
+          - containerPort: 8080
