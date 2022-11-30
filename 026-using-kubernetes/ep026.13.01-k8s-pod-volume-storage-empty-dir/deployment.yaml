@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  selector:
+    matchLabels:
+      app: myapp-deployment
+  template:
+    metadata:
+      labels:
+        app: myapp-deployment
+    spec:
+      volumes:
+        - name: nginx-store
+          emptyDir:
+            sizeLimit: 100Mi
+        - name: postgres-store
+          emptyDir:
+            sizeLimit: 100Mi
+        - name: shared-store
+          emptyDir:
+            sizeLimit: 100Mi
+      containers:
+        - name: myapp-nginx
+          image: nginx
+          volumeMounts:
+            - mountPath: /my-store
+              name: nginx-store
+            - mountPath: /shared-store
+              name: shared-store
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
+        - name: myapp-postgres
+          image: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              value: "postgres"
+          volumeMounts:
+            - mountPath: /my-store
+              name: postgres-store
+            - mountPath: /shared-store
+              name: shared-store
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 5432
