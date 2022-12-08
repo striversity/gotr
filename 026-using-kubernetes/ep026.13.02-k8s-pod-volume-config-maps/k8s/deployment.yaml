@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      volumes:
+        - name: config1
+          configMap:
+            name: myapp-configmap
+            items:
+              - key: srv1_version
+                path: "srv1_version.txt"
+              - key: test_data
+                path: "test_data.csv"
+      containers:
+        - name: nginx
+          image: nginx
+          volumeMounts:
+            - name: config1
+              mountPath: /config1
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
