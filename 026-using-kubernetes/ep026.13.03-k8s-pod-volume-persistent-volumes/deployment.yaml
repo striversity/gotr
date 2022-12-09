@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  selector:
+    matchLabels:
+      app: myapp-deployment
+  template:
+    metadata:
+      labels:
+        app: myapp-deployment
+    spec:
+      volumes:
+        - name: store1
+          persistentVolumeClaim:
+            claimName: pv-claim-nfs
+      containers:
+        - name: myapp-nginx
+          image: nginx
+          volumeMounts:
+            - name: store1
+              mountPath: /store1
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
