@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod-3
+  namespace: test-group
+  labels:
+    name: my-pod-3
+spec:
+  containers:
+  - name: my-pod-3
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
