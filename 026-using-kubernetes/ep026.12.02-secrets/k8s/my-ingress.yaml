@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  labels:
+    name: my-ingress
+spec:
+  rules:
+  - host: srv1.localhost.local
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: asrv1
+            port: 
+              number: 8080
+  - host: srv2.localhost.local
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: asrv2
+            port: 
+              number: 8080

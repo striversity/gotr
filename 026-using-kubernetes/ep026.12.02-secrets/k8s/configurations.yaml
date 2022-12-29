@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myapp
+data:
+  srv1_version: v0.0.3
+  srv2_version: v0.0.4
+  test_data: |
+    id,name,email
+    1,user1,foo@email.com
+    2,user2,goo@email.com
