@@ -14,5 +14,5 @@ require (
 
 require (
 	github.com/go-redis/redis/v8 v8.11.4
-	golang.org/x/sys v0.0.0-20210423082822-04245dca01da // indirect
+	golang.org/x/sys v0.1.0 // indirect
 )
