@@ -1,103 +1,22 @@
 package main
 
-import (
-	"flag"
-	"fmt"
-	"os"
-	"os/signal"
-
-	"github.com/charmbracelet/log"
-	"github.com/nats-io/nats.go"
-)
-
-var (
-	username string
-	password string
-	hostname = "localhost"
-	port     = 4222
-)
-
-func init() {
-	flag.StringVar(&username, "u", username, "username for NATS Server")
-	flag.StringVar(&password, "p", password, "password for NATS Server")
-	flag.StringVar(&hostname, "host", hostname, "NATS Server hostname")
-	flag.IntVar(&port, "port", port, "NATS Server port")
-	flag.Parse()
-}
-
-func fatalOnErr(err error) {
-	if err != nil {
-		log.Fatal("fatal error", "error", err)
-	}
-}
+import "fmt"
 
 func main() {
-	url := fmt.Sprintf("nats://%v:%v", hostname, port)
-	if username != "" {
-		url = fmt.Sprintf("nats://%v:%v@%v:%v", username, password, hostname, port)
-	}
+	// key (Track #) -> value (Title)
+	// "001"  -> "Three Little Birds"
+	// "002"  -> "The Wind Cries Mary
+	// "003"  -> "The Birds"
 
-	nc, err := nats.Connect(url)
-	fatalOnErr(err)
-	defer nc.Close()
+	playlist := make(map[string]string)
 
-	js, err := nc.JetStream()
-	fatalOnErr(err)
+	playlist["001"] = "Three Little Birds"
 
-	// list all buckets and their keys
-	for bucketName := range js.KeyValueStoreNames() {
-		fmt.Printf("Bucket - %s\n", bucketName)
+	playlist["002"] = "The Wind Cries Mary"
 
-		// trim 'KV_' from bucketName
-		bucketName = bucketName[3:]
-		
-		kvBucket, err := js.KeyValue(bucketName)
-		if err != nil {
-			log.Error("error getting bucket", "error", err)
-			continue
-		}
+	playlist["003"] = "The Birds"
 
-		keys, err := kvBucket.Keys()
-		if err != nil {
-			continue
-		}
-
-		for _, key := range keys {
-			fmt.Printf("\t%s\n", key)
-		}
-	}
-
-	// create a new bucket call 'sensors'
-	bucketName := "sensors"
-	sensors, err := js.CreateKeyValue(&nats.KeyValueConfig{
-		Bucket: bucketName,
-	})
-	if err != nil {
-		fatalOnErr(err)
-	}
-
-	// add a few key & value pairs
-	sensors.PutString("temperature", "48deg")
-	sensors.PutString("humidity", "50%")
-	sensors.PutString("pressure", "10bars")
-
-	monitor, err := sensors.Watch("*")
-	fatalOnErr(err)
-
-	go handleReadings(monitor.Updates())
-
-	// cleanly exit application if signal is caught
-	c := make(chan os.Signal, 1)
-	signal.Notify(c, os.Interrupt)
-	<-c
-
-	log.Info("INFO - Exiting on signal")
-}
-
-func handleReadings(ch <-chan nats.KeyValueEntry) {
-	for entry := range ch {
-		if entry != nil {
-			log.Info("new reading", "sensor", entry.Key(), "value", string(entry.Value()))
-		}
+	for tr, title := range playlist {
+		fmt.Printf("Track #%v -> Title: %v\n", tr, title)
 	}
 }
