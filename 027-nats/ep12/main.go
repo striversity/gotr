@@ -71,9 +71,7 @@ func main() {
 	sensors, err := js.CreateKeyValue(&nats.KeyValueConfig{
 		Bucket: bucketName,
 	})
-	if err != nil {
-		fatalOnErr(err)
-	}
+	fatalOnErr(err)
 
 	// add a few key & value pairs
 	sensors.PutString("temperature", "48deg")
