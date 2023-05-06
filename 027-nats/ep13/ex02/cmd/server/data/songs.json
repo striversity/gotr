@@ -1,0 +1,68 @@
+{
+  "reggae": [
+    { "id":"001", "title": "Three Little Birds", "artist": "Bob Marley & The Wailers" },
+    { "id":"002", "title": "No Woman, No Cry", "artist": "Bob Marley & The Wailers" },
+    { "id":"003", "title": "Redemption Song", "artist": "Bob Marley & The Wailers" },
+    {
+      "id":"004", "title": "One Love/People Get Ready",
+      "artist": "Bob Marley & The Wailers"
+    },
+    { "id":"005", "title": "Stir It Up", "artist": "Bob Marley & The Wailers" },
+    { "id":"006", "title": "Buffalo Soldier", "artist": "Bob Marley & The Wailers" },
+    { "id":"007", "title": "Is This Love", "artist": "Bob Marley & The Wailers" },
+    { "id":"008", "title": "I Shot the Sheriff", "artist": "Bob Marley & The Wailers" },
+    { "id":"009", "title": "Get Up, Stand Up", "artist": "Bob Marley & The Wailers" },
+    { "id":"010", "title": "Jamming", "artist": "Bob Marley & The Wailers" },
+    { "id":"011", "title": "Waiting in Vain", "artist": "Bob Marley & The Wailers" },
+    { "id":"012", "title": "Satisfy My Soul", "artist": "Bob Marley & The Wailers" },
+    { "id":"013", "title": "Natural Mystic", "artist": "Bob Marley & The Wailers" },
+    { "id":"014", "title": "Positive Vibration", "artist": "Bob Marley & The Wailers" },
+    {
+      "id":"015", "title": "Rebel Music (3 O'Clock Roadblock)",
+      "artist": "Bob Marley & The Wailers"
+    },
+    { "id":"016", "title": "Could You Be Loved", "artist": "Bob Marley & The Wailers" },
+    { "id":"017", "title": "Lively Up Yourself", "artist": "Bob Marley & The Wailers" },
+    { "id":"018", "title": "Zimbabwe", "artist": "Bob Marley & The Wailers" },
+    { "id":"019", "title": "Concrete Jungle", "artist": "Bob Marley & The Wailers" },
+    { "id":"020", "title": "Slave Driver", "artist": "Bob Marley & The Wailers" },
+    { "id":"021", "title": "Kaya", "artist": "Bob Marley & The Wailers" },
+    {
+      "id":"022", "title": "So Much Trouble in the World",
+      "artist": "Bob Marley & The Wailers"
+    },
+    { "id":"023", "title": "Exodus", "artist": "Bob Marley & The Wailers" },
+    { "id":"024", "title": "War", "artist": "Bob Marley & The Wailers" },
+    { "id":"025", "title": "Trenchtown Rock", "artist": "Bob Marley & The Wailers" }
+  ],
+  "blues": [
+    { "id":"001", "title": "Cross Road Blues", "artist": "Robert Johnson" },
+    { "id":"002", "title": "The Thrill Is Gone", "artist": "B.B. King" },
+    { "id":"003", "title": "I'm Your Hoochie Coochie Man", "artist": "Muddy Waters" },
+    { "id":"004", "title": "Stormy Monday", "artist": "T-Bone Walker" },
+    { "id":"005", "title": "Mannish Boy", "artist": "Muddy Waters" },
+    { "id":"006", "title": "Sweet Home Chicago", "artist": "Robert Johnson" },
+    { "id":"007", "title": "Born Under a Bad Sign", "artist": "Albert King" },
+    { "id":"008", "title": "Red House", "artist": "Jimi Hendrix" },
+    { "id":"009", "title": "Statesboro Blues", "artist": "Blind Willie McTell" },
+    { "id":"010", "title": "The Sky Is Crying", "artist": "Elmore James" },
+    { "id":"011", "title": "Dust My Broom", "artist": "Robert Johnson" },
+    { "id":"012", "title": "Black Cat Bone", "artist": "Lightnin' Hopkins" },
+    { "id":"013", "title": "All Your Love (I Miss Loving)", "artist": "Otis Rush" },
+    { "id":"014", "title": "Hoochie Coochie Man", "artist": "Eric Clapton" },
+    { "id":"015", "title": "I Ain't Superstitious", "artist": "Howlin' Wolf" },
+    { "id":"016", "title": "I Can't Quit You Baby", "artist": "Willie Dixon" },
+    { "id":"017", "title": "Rollin' and Tumblin'", "artist": "Muddy Waters" },
+    { "id":"018", "title": "Rock Me Baby", "artist": "B.B. King" },
+    { "id":"019", "title": "Spoonful", "artist": "Howlin' Wolf" },
+    {
+      "id":"020", "title": "Nobody Knows You When You're Down and Out",
+      "artist": "Bessie Smith"
+    },
+    { "id":"021", "title": "Sitting on Top of the World", "artist": "Mississippi Sheiks" },
+    { "id":"022", "title": "Boom Boom", "artist": "John Lee Hooker" },
+    { "id":"023", "title": "Fever", "artist": "Little Willie John" },
+    { "id":"024", "title": "St. James Infirmary", "artist": "Louis Armstrong" },
+    { "id":"025", "title": "The Things That I Used to Do", "artist": "Guitar Slim" }
+  ]
+}
