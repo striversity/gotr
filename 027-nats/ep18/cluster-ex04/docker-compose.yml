@@ -1,0 +1,34 @@
+services:
+  nats1:
+    env_file:
+      - .env
+    image: nats
+    command: -c /etc/nats-server.conf --name nats1
+    volumes:
+      - ./nats-server.conf:/etc/nats-server.conf
+    ports:
+      - 4222:4222
+      - 6222:6222
+
+  nats2:
+    env_file:
+      - .env
+    image: nats
+    command: -c /etc/nats-server.conf --name nats2
+    volumes:
+      - ./nats-server.conf:/etc/nats-server.conf
+    ports:
+      - 4223:4222
+      - 6223:6222
+
+  nats3:
+    env_file:
+      - .env
+    image: nats
+    command: -c /etc/nats-server.conf --name nats3
+    volumes:
+      - ./nats-server.conf:/etc/nats-server.conf
+    ports:
+      - 4224:4222
+      - 6224:6222
+

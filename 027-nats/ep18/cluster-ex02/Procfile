@@ -1,0 +1,3 @@
+nats1: nats-server -c nats-server1.conf
+nats2: nats-server -c nats-server2.conf
+nats3: nats-server -c nats-server3.conf

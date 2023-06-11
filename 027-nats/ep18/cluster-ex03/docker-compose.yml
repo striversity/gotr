@@ -1,0 +1,25 @@
+services:
+  nats1:
+    image: nats
+    command: -c /etc/nats-server.conf
+    volumes:
+      - ./nats-server1.conf:/etc/nats-server.conf
+    ports:
+      - 4222:4222
+      - 6222:6222
+  nats2:
+    image: nats
+    command: -c /etc/nats-server.conf
+    volumes:
+      - ./nats-server2.conf:/etc/nats-server.conf
+    ports:
+      - 4223:4222
+      - 6223:6222
+  nats3:
+    image: nats
+    command: -c /etc/nats-server.conf
+    volumes:
+      - ./nats-server3.conf:/etc/nats-server.conf
+    ports:
+      - 4224:4222
+      - 6224:6222
