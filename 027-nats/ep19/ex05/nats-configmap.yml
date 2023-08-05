@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nats-config
+data:
+  NATS_SERVER_CONF: |
+    # Your nats-server.conf contents go here

@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nats-ingress
+spec:
+  rules:
+    - host: your-nats-domain.com  # Replace with your desired domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nats-service
+                port:
+                  number: 4222

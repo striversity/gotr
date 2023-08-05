@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nats-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nats
+  template:
+    metadata:
+      labels:
+        app: nats
+    spec:
+      containers:
+      - name: nats-server
+        image: nats:2.9.20-linux
+        command: ["nats-server"]
+        args: ["--name", "$(POD_NAME)", "--jetstream"]
+        ports:
+          - containerPort: 4222
+            name: client-port
+          - containerPort: 6222
+            name: route-port
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

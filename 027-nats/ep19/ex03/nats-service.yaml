@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nats-service
+spec:
+  type: NodePort
+  selector:
+    app: nats
+  ports:
+    - protocol: TCP
+      port: 4222
+      targetPort: 4222
+      name: client-port
+      nodePort: 32222

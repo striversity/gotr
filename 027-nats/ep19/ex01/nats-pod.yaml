@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nats-pods
+  labels:
+    name: nats
+spec:
+  containers:
+  - name: nats-server
+    image: nats
+    command: ["nats-server"]
+    args: ["--name", "$(POD_NAME)", "--jetstream"]
+    ports:
+      - containerPort: 4222
+        name: client-port
+      - containerPort: 6222
+        name: route-port
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"

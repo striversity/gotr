@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  labels:
+    app: nats
+spec:
+  containers:
+    - name: nats-server
+      image: nats
+      envFrom:
+        - configMapRef:
+            name: nats-config
+      command: ["nats-server"]
+      args: ["-c", "/etc/nats-server.conf", "--name", "$(POD_NAME)"]
+      volumeMounts:
+        - name: nats-config-volume
+          mountPath: /etc/nats-server.conf
+      ports:
+        - containerPort: 4222
+          name: client-port
+        - containerPort: 6222
+          name: route-port
