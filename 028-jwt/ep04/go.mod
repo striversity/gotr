@@ -7,6 +7,8 @@ require (
 	github.com/golang-jwt/jwt/v4 v4.5.0
 )
 
+require github.com/davecheney/junk v0.0.0-20170418064243-155060ce6d56 // indirect
+
 require (
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/charmbracelet/lipgloss v0.7.1 // indirect
