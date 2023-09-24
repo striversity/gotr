@@ -1,0 +1,9 @@
+version: '3'
+
+tasks:
+  dev:
+    dir: '{{.USER_WORKING_DIR}}'
+    sources:
+      - "**/*.go"
+    cmds:
+      - go build -o app && ./app
