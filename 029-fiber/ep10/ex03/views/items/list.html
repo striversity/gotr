@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Items Table</title>
+  <style>
+    table {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+
+    th {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Items Table</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{range .Items}}
+        <tr>
+          <td>{{.ID}}</td>
+          <td>{{.Name}}</td>
+          <td>{{.Price}}</td>
+          <td>{{.Desc}}</td>
+        </tr>
+      {{end}}
+    </tbody>
+  </table>
+</body>
+</html>

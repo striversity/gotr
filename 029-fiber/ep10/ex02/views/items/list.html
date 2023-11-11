@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Items Table</title>
+  <style>
+    table {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+
+    th {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Items Table</h1>
+
+  <table id="items-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // Fetch the JSON array of Items from the /api/items endpoint
+    async function fetchItems() {
+      const response = await fetch('/api/items');
+      const items = await response.json();
+
+      // Render the Items in the table
+      const tbody = document.querySelector('#items-table tbody');
+
+      for (const item of items) {
+        const tr = document.createElement('tr');
+
+        const idTd = document.createElement('td');
+        idTd.textContent = item.id;
+
+        const nameTd = document.createElement('td');
+        nameTd.textContent = item.name;
+
+        const priceTd = document.createElement('td');
+        priceTd.textContent = item.price;
+
+        const descriptionTd = document.createElement('td');
+        descriptionTd.textContent = item.desc;
+
+        tr.appendChild(idTd);
+        tr.appendChild(nameTd);
+        tr.appendChild(priceTd);
+        tr.appendChild(descriptionTd);
+
+        tbody.appendChild(tr);
+      }
+    }
+
+    // Fetch the Items when the page loads
+    window.addEventListener('load', fetchItems);
+  </script>
+</body>
+</html>
