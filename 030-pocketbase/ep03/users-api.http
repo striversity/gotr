@@ -1,0 +1,43 @@
+# baseurl
+@baseurl = http://localhost:8090/api/collections
+
+### get all users
+GET {{baseurl}}/users/records
+
+
+### create a user
+POST {{baseurl}}/users/records
+Content-Type: application/json
+
+{
+  "password": "password",
+  "passwordConfirm": "password"
+}
+
+### create another user
+POST {{baseurl}}/users/records
+Content-Type: application/json
+
+{
+  "username": "john.doe",
+  "email": "john.doe@email.com",
+  "password": "password",
+  "passwordConfirm": "password"
+}
+
+### auth with user and password
+POST {{baseurl}}/users/auth-with-password
+Content-Type: application/json
+
+{
+  "identity": "john.doe",
+  "password": "password"
+}
+
+###
+# save JWT
+@token = abc.def.ghi
+
+### get all users
+GET {{baseurl}}/users/records
+Authorization: Bearer {{token}}
