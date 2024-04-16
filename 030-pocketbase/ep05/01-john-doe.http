@@ -1,0 +1,33 @@
+### auth with user and password
+# @name login
+POST {{$dotenv BASE_URL}}/users/auth-with-password
+Content-Type: application/json
+
+{
+  "identity": "john.doe",
+  "password": "password"
+}
+
+# save JWT
+@authToken = {{login.response.body.$.token}}
+
+###
+# @name createCart
+POST {{$dotenv BASE_URL}}/carts/records
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "paymentMethod": "Cash",
+  "discount": 0.1
+}
+
+### get ALL of our carts
+# @name getGetAllCartsForUser
+GET {{$dotenv BASE_URL}}/carts/records
+Authorization: Bearer {{authToken}}
+
+### get ALL items
+# @name getGetAllCartsForUser
+GET {{$dotenv BASE_URL}}/cart_items/records
+Authorization: Bearer {{authToken}}

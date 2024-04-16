@@ -1,0 +1,70 @@
+## RFC2616 Requests for Inserting Items in Pocketbase
+## NOTE: Replace Item's labels with IDs in your Pocketbase
+
+### Item 1: Headphones
+POST {{$dotenv BASE_URL}}/items/records
+Content-Type: application/json
+
+{
+  "name": "Headphones",
+  "description": "Noise-canceling headphones",
+  "price": 149.99,
+  "labels": [
+    "7gqdb6yxlpb2g6y",
+    "1i3bnyy7coobulo"
+  ]
+}
+
+### Item 2: Pencils
+POST {{$dotenv BASE_URL}}/items/records
+Content-Type: application/json
+
+{
+  "name": "Pencils",
+  "description": "Pack of 12 pencils",
+  "price": 4.99,
+  "labels": [
+    "ep4gzsky79kg5hu"
+  ]
+}
+
+### Item 3: The Lord of the Rings
+POST {{$dotenv BASE_URL}}/items/records
+Content-Type: application/json
+
+{
+  "name": "The Lord of the Rings",
+  "description": "Fantasy epic by J.R.R. Tolkien",
+  "price": 25.50,
+  "labels": [
+    "5183wjegkffsh1o",
+    "p9dl7wcw06mwqy7"
+  ]
+}
+
+### Item 4: Whitebooar Markers
+POST {{$dotenv BASE_URL}}/items/records
+Content-Type: application/json
+
+{
+  "name": "Whiteboard Markers",
+  "description": "Dry erase markers",
+  "price": 9.99,
+  "labels": [
+    "ep4gzsky79kg5hu"
+  ]
+}
+
+### Item 5: Harry Potter Collection
+POST {{$dotenv BASE_URL}}/items/records
+Content-Type: application/json
+
+{
+  "name": "Harry Potter Collection",
+  "description": "Set of all Harry Potter books",
+  "price": 79.99,
+  "labels": [
+    "5183wjegkffsh1o",
+    "p9dl7wcw06mwqy7"
+  ]
+}

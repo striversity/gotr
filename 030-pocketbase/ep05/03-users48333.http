@@ -1,0 +1,70 @@
+### auth with user and password
+# @name login
+POST {{$dotenv BASE_URL}}/users/auth-with-password
+Content-Type: application/json
+
+{
+  "identity": "{{$dotenv USER2_USERNAME}}",
+  "password": "{{$dotenv USER2_PASSWORD}}"
+}
+
+# save JWT
+@authToken = {{login.response.body.$.token}}
+# save authenticated user id
+@authUserId = {{login.response.body.$.record.id}}
+
+### create shopping cart
+# @name createCart
+POST {{$dotenv BASE_URL}}/carts/records
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "user": "{{authUserId}}",
+  "paymentMethod": "Cash",
+  "discount": 0.1
+}
+
+# save cart id
+@cartId = {{createCart.response.body.$.id}}
+
+## buy some items
+### add an headphone
+POST {{$dotenv BASE_URL}}/cart_items/records
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "cart": "{{cartId}}",
+  "item": "{{$dotenv item5}}",
+  "quantity": 1
+}
+
+## buy some items
+### add 2 pencils
+POST {{$dotenv BASE_URL}}/cart_items/records
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "cart": "{{cartId}}",
+  "item": "{{$dotenv item4}}",
+  "quantity": 2
+}
+
+## buy some items
+### add 5 copies of "The Lord of the Rings"
+POST {{$dotenv BASE_URL}}/cart_items/records
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "cart": "{{cartId}}",
+  "item": "{{$dotenv item3}}",
+  "quantity": 5
+}
+
+### get ALL items
+# @name getGetAllCartsForUser
+GET {{$dotenv BASE_URL}}/cart_items/records
+Authorization: Bearer {{authToken}}
