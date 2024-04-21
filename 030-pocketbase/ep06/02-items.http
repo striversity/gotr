@@ -1,0 +1,69 @@
+### Upload images for Item 1
+PATCH  {{$dotenv BASE_URL}}/items/records/{{$dotenv item1}}
+Content-Type: multipart/form-data; boundary=ABCDEF
+
+--ABCDEF
+Content-Disposition: form-data; name="price"
+
+115.35
+--ABCDEF
+Content-Disposition: form-data; name="images"; filename="item1-3.jpeg"
+Content-Type: image/jpeg
+
+< ./item1-3.jpeg
+--ABCDEF--
+
+### Upload images for Item 2
+PATCH  {{$dotenv BASE_URL}}/items/records/{{$dotenv item2}}
+Content-Type: multipart/form-data; boundary=ABCDEF
+
+--ABCDEF
+Content-Disposition: form-data; name="images"; filename="item2-1.jpeg"
+Content-Type: image/jpeg
+
+< ./item2-1.jpeg
+--ABCDEF--
+
+### Upload images for Item 3
+PATCH  {{$dotenv BASE_URL}}/items/records/{{$dotenv item3}}
+Content-Type: multipart/form-data; boundary=ABCDEF
+
+--ABCDEF
+Content-Disposition: form-data; name="images"; filename="item3-1.jpeg"
+Content-Type: image/jpeg
+
+< ./item3-1.jpeg
+--ABCDEF--
+
+### Upload images for Item 4
+PATCH  {{$dotenv BASE_URL}}/items/records/{{$dotenv item4}}
+Content-Type: multipart/form-data; boundary=ABCDEF
+
+--ABCDEF
+Content-Disposition: form-data; name="images"; filename="item4-1.jpeg"
+Content-Type: image/jpeg
+
+< ./item4-1.jpeg
+--ABCDEF--
+
+### Upload images for Item 5
+PATCH  {{$dotenv BASE_URL}}/items/records/{{$dotenv item5}}
+Content-Type: multipart/form-data; boundary=ABCDEF
+
+--ABCDEF
+Content-Disposition: form-data; name="images"; filename="item5-1.jpeg"
+Content-Type: image/jpeg
+
+< ./item5-1.jpeg
+--ABCDEF--
+
+### 
+PATCH  {{$dotenv BASE_URL}}/items/records/{{$dotenv item5}}
+Content-Type: multipart/form-data; boundary=ABCDEF
+
+--ABCDEF
+Content-Disposition: form-data; name="images"; filename="item5-2.jpeg"
+Content-Type: image/jpeg
+
+< ./item5-2.jpeg
+--ABCDEF--
