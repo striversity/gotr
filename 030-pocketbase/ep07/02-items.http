@@ -1,0 +1,26 @@
+### get an item
+GET {{$dotenv BASE_URL}}/items/records/{{$dotenv item4}}
+
+### add label to item
+PATCH {{$dotenv BASE_URL}}/items/records/{{$dotenv item4}}
+Content-Type: application/json
+
+{
+  "labels": ["5183wjegkffsh1o"]
+}
+
+### add Office Supply label to item
+PATCH {{$dotenv BASE_URL}}/items/records/{{$dotenv item4}}
+Content-Type: application/json
+
+{
+  "labels+": ["ep4gzsky79kg5hu"]
+}
+
+### remove Fiction label from item
+PATCH {{$dotenv BASE_URL}}/items/records/{{$dotenv item4}}
+Content-Type: application/json
+
+{
+  "labels-": ["5183wjegkffsh1o"]
+}
