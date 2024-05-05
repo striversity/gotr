@@ -1,0 +1,16 @@
+### login as admin
+# @name loginAsAdmin
+POST {{$dotenv API_URL}}/admins/auth-with-password
+Content-Type: application/json
+
+{
+  "identity": "{{$dotenv ADMIN_EMAIL}}",
+  "password": "{{$dotenv ADMIN_PASSWORD}}"
+}
+
+# save login token
+@authToken = {{loginAsAdmin.response.body.$.token}}
+
+### expand shopping cart to include its owner info
+GET {{$dotenv COLLECTIONS_URL}}/carts/records?expand=user
+  Authorization: Bearer {{authToken}}

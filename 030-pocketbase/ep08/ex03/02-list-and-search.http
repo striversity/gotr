@@ -1,0 +1,18 @@
+### login as admin
+# @name loginAsAdmin
+POST {{$dotenv API_URL}}/admins/auth-with-password
+Content-Type: application/json
+
+{
+  "identity": "{{$dotenv ADMIN_EMAIL}}",
+  "password": "{{$dotenv ADMIN_PASSWORD}}"
+}
+
+# save login token
+@authToken = {{loginAsAdmin.response.body.$.token}}
+
+### limit fields returned
+GET {{$dotenv COLLECTIONS_URL}}/carts/records
+?fields=id,discount,paymentMethod,expand,ordered
+&expand=user
+  Authorization: Bearer {{authToken}}
