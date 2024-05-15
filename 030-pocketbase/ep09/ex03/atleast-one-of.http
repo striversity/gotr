@@ -1,0 +1,16 @@
+### find items where at least one label name is 'fiction'
+GET {{$dotenv COLLECTIONS_URL}}/items/records
+?filter=labels.name?='fiction'
+
+### find items where at least one label name is 'Fiction'
+GET {{$dotenv COLLECTIONS_URL}}/items/records
+?filter=labels.name?='Fiction'
+
+### find items where at least one label name contains 'fiction'
+GET {{$dotenv COLLECTIONS_URL}}/items/records
+?filter=labels.name?~'fiction'
+
+
+### find items where at least one label name contains 'fic' 
+GET {{$dotenv COLLECTIONS_URL}}/items/records
+?filter=labels.name?~'fic'

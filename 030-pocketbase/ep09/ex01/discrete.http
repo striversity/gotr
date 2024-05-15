@@ -1,0 +1,10 @@
+### find items that cost exactly $4.99
+GET {{$dotenv COLLECTIONS_URL}}/items/records
+?filter=price=4.99
+
+### find all 'Whiteboard Markers'
+GET {{$dotenv COLLECTIONS_URL}}/items/records
+?filter=name="Whiteboard Markers"
+
+### find all items costing a $100.00 or more
+GET {{$dotenv COLLECTIONS_URL}}/items/records?filter=price>=100

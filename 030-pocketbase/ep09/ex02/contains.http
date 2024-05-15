@@ -1,0 +1,11 @@
+### find items with the word 'book' in the description
+GET {{$dotenv COLLECTIONS_URL}}/items/records
+?filter=description~'book'
+
+### find items with the word 'of' in the name OR description
+GET {{$dotenv COLLECTIONS_URL}}/items/records
+?filter=(name~'of') || (description~'of')
+
+### find items with the word 'set' at the beginning of the description
+GET {{$dotenv COLLECTIONS_URL}}/items/records
+?filter=description~'set%'
