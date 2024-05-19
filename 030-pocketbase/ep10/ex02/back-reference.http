@@ -1,0 +1,24 @@
+### Back Reference - find all users with an unordered cart
+GET {{$dotenv COLLECTIONS_URL}}/users/records
+
+### Back Reference - find all users with an unordered cart
+GET {{$dotenv COLLECTIONS_URL}}/users/records
+?fields=username
+
+### Back Reference - find all users with an unordered cart
+GET {{$dotenv COLLECTIONS_URL}}/users/records
+?expand=carts_via_user
+&fields=username,expand
+
+### Back Reference - find all users with an unordered cart
+GET {{$dotenv COLLECTIONS_URL}}/users/records
+?expand=carts_via_user
+&fields=username,expand
+&filter=carts_via_user.ordered?=false
+
+### Back Reference - find all users with an unordered cart
+GET {{$dotenv COLLECTIONS_URL}}/users/records
+?fields=username
+&filter=carts_via_user.ordered?=false
+
+

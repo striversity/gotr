@@ -1,0 +1,19 @@
+### Forwad Reference - find all users with an unordered cart
+GET {{$dotenv COLLECTIONS_URL}}/carts/records
+
+### Forwad Reference - find all users with an unordered cart
+GET {{$dotenv COLLECTIONS_URL}}/carts/records
+?fields=user
+&filter=ordered=false
+
+### Forwad Reference - find all users with an unordered cart
+GET {{$dotenv COLLECTIONS_URL}}/carts/records
+?expand=user
+&fields=expand
+&filter=ordered=false
+
+### Forwad Reference - find all users with an unordered cart
+GET {{$dotenv COLLECTIONS_URL}}/carts/records
+?expand=user
+&fields=expand.user.username
+&filter=ordered=false
