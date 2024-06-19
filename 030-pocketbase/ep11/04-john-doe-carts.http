@@ -1,0 +1,20 @@
+### auth with user and password
+# @name login
+POST {{$dotenv COLLECTIONS_URL}}/users/auth-with-password
+Content-Type: application/json
+
+{
+  "identity": "{{$dotenv USER2_USERNAME}}",
+  "password": "{{$dotenv USER2_PASSWORD}}"
+}
+
+# save JWT
+@authToken = {{login.response.body.$.token}}
+
+### get ALL of our unordered carts
+GET {{$dotenv COLLECTIONS_URL}}/carts/records
+Authorization: Bearer {{authToken}}
+
+### get ALL of our ordered carts
+GET {{$dotenv COLLECTIONS_URL}}/carts_view/records
+Authorization: Bearer {{authToken}}

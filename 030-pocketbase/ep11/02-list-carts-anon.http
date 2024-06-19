@@ -1,0 +1,5 @@
+### get ALL records in carts collection as an anonymous users
+GET {{$dotenv COLLECTIONS_URL}}/carts/records
+
+### get ALL records in carts_view collection as an anonymous users
+GET {{$dotenv COLLECTIONS_URL}}/carts_view/records
