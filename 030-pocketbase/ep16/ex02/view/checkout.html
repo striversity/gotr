@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script src="js/common.js"></script>
+		<style src="css/common.css" type="text/tailwindcss"></style>
+  </head>
+  <body>
+    <div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold mb-4">Checkout</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <h2 class="text-xl font-bold mb-2">Order Summary</h2>
+      <ul class="border rounded-md p-4">
+        <li class="flex justify-between items-center py-2">
+          <span>Subtotal</span>
+          <span class="font-bold">$150.00</span>
+        </li>
+        <li class="flex justify-between items-center py-2">
+          <span>Shipping</span>
+          <span class="font-bold">$10.00</span>
+        </li>
+        <li class="flex justify-between items-center py-2">
+          <span>Tax</span>
+          <span class="font-bold">$8.00</span>
+        </li>
+        <li class="flex justify-between items-center py-2">
+          <span>Discount</span>
+          <span class="font-bold">- $5.00</span>
+        </li>
+        <li class="flex justify-between items-center py-2 text-lg font-bold">
+          <span>Total</span>
+          <span>$163.00</span>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-xl font-bold mb-2">Payment Information</h2>
+      <div class="mb-4">
+        <label for="card-number" class="block text-zinc-700 text-sm font-bold mb-2">Card Number</label>
+        <input type="text" id="card-number" class="shadow appearance-none border rounded w-full py-2 px-3 text-zinc-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="XXXX XXXX XXXX XXXX">
+      </div>
+      <div class="mb-4">
+        <label for="expiry-date" class="block text-zinc-700 text-sm font-bold mb-2">Expiry Date</label>
+        <input type="text" id="expiry-date" class="shadow appearance-none border rounded w-full py-2 px-3 text-zinc-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="MM/YY">
+      </div>
+      <div class="mb-4">
+        <label for="cvv" class="block text-zinc-700 text-sm font-bold mb-2">CVV</label>
+        <input type="text" id="cvv" class="shadow appearance-none border rounded w-full py-2 px-3 text-zinc-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="XXX">
+      </div>
+      <div class="mb-4">
+        <label for="payment-method" class="block text-zinc-700 text-sm font-bold mb-2">Payment Method</label>
+        <select id="payment-method" class="shadow appearance-none border rounded w-full py-2 px-3 text-zinc-700 leading-tight focus:outline-none focus:shadow-outline">
+          <option value="visa">Visa</option>
+          <option value="mastercard">Mastercard</option>
+          <option value="amex">American Express</option>
+          <option value="paypal">PayPal</option>
+        </select>
+      </div>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Place Order</button>
+    </div>
+  </div>
+</div>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script src="js/common.js"></script>
+		<style src="css/common.css" type="text/tailwindcss"></style>
+  </head>
+  <body>
+    <div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4 text-zinc-800 dark:text-zinc-200">Order History</h1>
+  <div class="overflow-x-auto">
+    <table class="table-auto w-full text-sm text-left text-zinc-500 dark:text-zinc-400">
+      <thead class="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            Invoice Number
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Order Number
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Total
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Date
+          </th>
+          <th scope="col" class="px-6 py-3">
+            <span class="sr-only">Actions</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+          <td class="px-6 py-4">
+            #12345
+          </td>
+          <td class="px-6 py-4">
+            #67890
+          </td>
+          <td class="px-6 py-4">
+            $120.00
+          </td>
+          <td class="px-6 py-4">
+            2023-10-26
+          </td>
+          <td class="px-6 py-4">
+            <button class="bg-primary text-primary-foreground font-medium rounded-lg text-sm px-4 py-2 hover:bg-primary/80">View Details</button>
+          </td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+          <td class="px-6 py-4">
+            #12345
+          </td>
+          <td class="px-6 py-4">
+            #67890
+          </td>
+          <td class="px-6 py-4">
+            $120.00
+          </td>
+          <td class="px-6 py-4">
+            2023-10-26
+          </td>
+          <td class="px-6 py-4">
+            <button class="bg-primary text-primary-foreground font-medium rounded-lg text-sm px-4 py-2 hover:bg-primary/80">View Details</button>
+          </td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-zinc-800 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+          <td class="px-6 py-4">
+            #12345
+          </td>
+          <td class="px-6 py-4">
+            #67890
+          </td>
+          <td class="px-6 py-4">
+            $120.00
+          </td>
+          <td class="px-6 py-4">
+            2023-10-26
+          </td>
+          <td class="px-6 py-4">
+            <button class="bg-primary text-primary-foreground font-medium rounded-lg text-sm px-4 py-2 hover:bg-primary/80">View Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script src="js/common.js"></script>
+		<style src="css/common.css" type="text/tailwindcss"></style>
+  </head>
+  <body>
+    <div class="flex flex-col gap-4">
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-bold">Featured Products</h1>
+    <div class="relative">
+      <button class="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-lg px-4 py-2">
+        <span class="flex items-center gap-2">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h2l.895 1.789A4.952 4.952 0 006.95 8h2.086a4.953 4.953 0 009.014 0h2.087A4.953 4.953 0 0021 8l.895-1.789M3 13h18M3 18h18"></path></svg>
+          <span>Cart</span>
+        </span>
+        <span class="absolute top-1 right-2 bg-accent text-accent-foreground rounded-full px-2 py-1 text-xs">2</span>
+      </button>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="bg-card rounded-lg p-4 shadow-md hover:shadow-lg cursor-pointer">
+      <img alt="product-image" src="https://placehold.co/300x200" class="w-full rounded-lg mb-2">
+      <h2 class="text-lg font-bold">Product Name</h2>
+      <p class="text-zinc-500 text-sm">Short product description goes here.</p>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-lg font-bold">$19.99</span>
+        <button class="bg-primary text-primary-foreground hover:bg-primary/80 rounded-lg px-4 py-2">Add to Cart</button>
+      </div>
+    </div>
+    <div class="bg-card rounded-lg p-4 shadow-md hover:shadow-lg cursor-pointer">
+      <img alt="product-image" src="https://placehold.co/300x200" class="w-full rounded-lg mb-2">
+      <h2 class="text-lg font-bold">Product Name</h2>
+      <p class="text-zinc-500 text-sm">Short product description goes here.</p>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-lg font-bold">$19.99</span>
+        <button class="bg-primary text-primary-foreground hover:bg-primary/80 rounded-lg px-4 py-2">Add to Cart</button>
+      </div>
+    </div>
+    <div class="bg-card rounded-lg p-4 shadow-md hover:shadow-lg cursor-pointer">
+      <img alt="product-image" src="https://placehold.co/300x200" class="w-full rounded-lg mb-2">
+      <h2 class="text-lg font-bold">Product Name</h2>
+      <p class="text-zinc-500 text-sm">Short product description goes here.</p>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-lg font-bold">$19.99</span>
+        <button class="bg-primary text-primary-foreground hover:bg-primary/80 rounded-lg px-4 py-2">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </body>
+</html>

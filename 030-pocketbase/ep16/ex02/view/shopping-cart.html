@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script src="js/common.js"></script>
+		<style src="css/common.css" type="text/tailwindcss"></style>
+  </head>
+  <body>
+    <div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold text-zinc-900 dark:text-zinc-100">Shopping Cart</h1>
+  <div class="mt-6 flex flex-col gap-4">
+    <div class="bg-white dark:bg-zinc-800 rounded-md shadow-md p-4">
+      <div class="flex justify-between items-center">
+        <h2 class="text-xl font-medium text-zinc-900 dark:text-zinc-100">Your Items</h2>
+        <button class="bg-zinc-200 dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-medium py-2 px-4 rounded-md hover:bg-zinc-300 dark:hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:focus:ring-zinc-700">Clear Cart</button>
+      </div>
+      <div class="mt-4">
+        <table class="w-full text-left text-zinc-500 dark:text-zinc-400">
+          <thead class="bg-zinc-100 dark:bg-zinc-700">
+            <tr>
+              <th class="px-4 py-3 text-left text-xs uppercase font-semibold text-zinc-900 dark:text-zinc-100">Product</th>
+              <th class="px-4 py-3 text-left text-xs uppercase font-semibold text-zinc-900 dark:text-zinc-100">Price</th>
+              <th class="px-4 py-3 text-left text-xs uppercase font-semibold text-zinc-900 dark:text-zinc-100">Quantity</th>
+              <th class="px-4 py-3 text-left text-xs uppercase font-semibold text-zinc-900 dark:text-zinc-100">Subtotal</th>
+              <th class="px-4 py-3 text-left text-xs uppercase font-semibold text-zinc-900 dark:text-zinc-100"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-zinc-100 dark:hover:bg-zinc-700">
+              <td class="px-4 py-3">
+                <div class="flex items-center">
+                  <img class="w-16 h-16 rounded-md" src="https://placehold.co/150x150" alt="Product image">
+                  <div class="ml-4">
+                    <h2 class="text-base font-medium text-zinc-900 dark:text-zinc-100">Product Name</h2>
+                    <p class="text-sm text-zinc-500 dark:text-zinc-400">Product description</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-3">$19.99</td>
+              <td class="px-4 py-3">
+                <div class="flex items-center">
+                  <button class="bg-zinc-200 dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-medium py-2 px-4 rounded-md hover:bg-zinc-300 dark:hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:focus:ring-zinc-700">-</button>
+                  <span class="ml-2 text-zinc-900 dark:text-zinc-100 font-medium">1</span>
+                  <button class="ml-2 bg-zinc-200 dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-medium py-2 px-4 rounded-md hover:bg-zinc-300 dark:hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:focus:ring-zinc-700">+</button>
+                </div>
+              </td>
+              <td class="px-4 py-3">$19.99</td>
+              <td class="px-4 py-3">
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400">Remove</button>
+              </td>
+            </tr>
+            <tr class="hover:bg-zinc-100 dark:hover:bg-zinc-700">
+              <td class="px-4 py-3">
+                <div class="flex items-center">
+                  <img class="w-16 h-16 rounded-md" src="https://placehold.co/150x150" alt="Product image">
+                  <div class="ml-4">
+                    <h2 class="text-base font-medium text-zinc-900 dark:text-zinc-100">Product Name</h2>
+                    <p class="text-sm text-zinc-500 dark:text-zinc-400">Product description</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-3">$29.99</td>
+              <td class="px-4 py-3">
+                <div class="flex items-center">
+                  <button class="bg-zinc-200 dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-medium py-2 px-4 rounded-md hover:bg-zinc-300 dark:hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:focus:ring-zinc-700">-</button>
+                  <span class="ml-2 text-zinc-900 dark:text-zinc-100 font-medium">1</span>
+                  <button class="ml-2 bg-zinc-200 dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-medium py-2 px-4 rounded-md hover:bg-zinc-300 dark:hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-200 dark:focus:ring-zinc-700">+</button>
+                </div>
+              </td>
+              <td class="px-4 py-3">$29.99</td>
+              <td class="px-4 py-3">
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400">Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="bg-white dark:bg-zinc-800 rounded-md shadow-md p-4">
+      <div class="flex justify-between items-center">
+        <h2 class="text-xl font-medium text-zinc-900 dark:text-zinc-100">Order Summary</h2>
+      </div>
+      <div class="mt-4">
+        <table class="w-full text-left text-zinc-500 dark:text-zinc-400">
+          <tbody>
+            <tr>
+              <td class="px-4 py-3 text-right text-zinc-900 dark:text-zinc-100 font-medium">Subtotal:</td>
+              <td class="px-4 py-3 text-right">$49.98</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-right text-zinc-900 dark:text-zinc-100 font-medium">Shipping:</td>
+              <td class="px-4 py-3 text-right">$5.99</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-right text-zinc-900 dark:text-zinc-100 font-medium">Tax:</td>
+              <td class="px-4 py-3 text-right">$2.99</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-right text-zinc-900 dark:text-zinc-100 font-bold">Total:</td>
+              <td class="px-4 py-3 text-right text-zinc-900 dark:text-zinc-100 font-bold">$58.96</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-6">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </body>
+</html>

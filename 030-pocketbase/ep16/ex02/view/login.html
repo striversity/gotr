@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script src="js/common.js"></script>
+		<style src="css/common.css" type="text/tailwindcss"></style>
+  </head>
+  <body>
+    <form class="flex flex-col gap-4">
+  <div>
+    <label for="email" class="block text-sm font-medium text-zinc-900 dark:text-zinc-300">Email address</label>
+    <input type="email" id="email" class="bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required>
+  </div>
+  <div>
+    <label for="password" class="block text-sm font-medium text-zinc-900 dark:text-zinc-300">Password</label>
+    <input type="password" id="password" class="bg-zinc-50 border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required>
+  </div>
+  <div class="flex items-center">
+    <input id="remember" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-zinc-100 rounded border border-zinc-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-zinc-800 focus:ring-2 dark:bg-zinc-700 dark:border-zinc-600">
+    <label for="remember" class="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300">Remember me</label>
+  </div>
+  <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign In</button>
+</form>
+  </body>
+</html>
